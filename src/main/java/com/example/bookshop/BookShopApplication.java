@@ -14,6 +14,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
@@ -26,6 +27,7 @@ public class BookShopApplication {
     private final PublisherDao publisherDao;
     @Bean
     @Transactional
+    @Profile("data")
     public ApplicationRunner runner(){
         return r -> {
             Author author1 = new Author("Charles Dickens","charles@gmail.com");
@@ -45,42 +47,42 @@ public class BookShopApplication {
                     "Oliver Twist",
                     "Excellent",
                     100.0,
-                    20,"https://source.unsplash.com/400*300/?flower"
+                    20,"https://m.media-amazon.com/images/M/MV5BMTg4MjAxMTg5N15BMl5BanBnXkFtZTcwODIzNjEzMg@@._V1_.jpg"
             );
             Book book2 = new Book(
                     2, IsbnGenerator.generate(),
                     "Great Expectations",
                     "Good Choice",
                     25.3,
-                    20,"https://source.unsplash.com/400*300/?nature"
+                    20,"https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/91FDaX8y25L._AC_UF1000,1000_QL80_.jpg"
             );
             Book book3 = new Book(
                     3, IsbnGenerator.generate(),
                     "Bleak House",
                     "Bravo",
                     50.3,
-                    20,"https://source.unsplash.com/400*300/?ocean"
+                    20,"https://m.media-amazon.com/images/I/61KXodXjmHL.jpg"
             );
             Book book4 = new Book(
                     4, IsbnGenerator.generate(),
                     "Under The Greenwood Tree",
                     "Nice",
                     70.0,
-                    20,"https://source.unsplash.com/400*300/?forest"
+                    20,"https://m.media-amazon.com/images/I/51pG4gRLgkL.jpg"
             );
             Book book5 = new Book(
                     5, IsbnGenerator.generate(),
                     "Return of the Native",
                     "Bravo",
                     25.0,
-                    20,"https://source.unsplash.com/400*300/?water"
+                    20,"https://m.media-amazon.com/images/I/51TqpGZLPDL.jpg"
             );
             Book book6 = new Book(
-                    1, IsbnGenerator.generate(),
+                    6, IsbnGenerator.generate(),
                     "Far From the Maddening Crowd",
                     "Great",
                     67.0,
-                    20,"https://source.unsplash.com/400*300/?fire"
+                    20,"https://m.media-amazon.com/images/M/MV5BNzI4NzUwNDgwN15BMl5BanBnXkFtZTgwNTI3MjMwNTE@._V1_.jpg"
             );
             //Mapping
             author1.addBook(book1);
