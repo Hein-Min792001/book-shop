@@ -14,6 +14,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @SpringBootApplication
@@ -23,7 +24,8 @@ public class BookShopApplication {
     private final BookDao bookDao;
     private final GenreDao genreDao;
     private final PublisherDao publisherDao;
-    //@Bean
+    @Bean
+    @Transactional
     public ApplicationRunner runner(){
         return r -> {
             Author author1 = new Author("Charles Dickens","charles@gmail.com");
@@ -45,7 +47,82 @@ public class BookShopApplication {
                     100.0,
                     20,"https://source.unsplash.com/400*300/?flower"
             );
+            Book book2 = new Book(
+                    2, IsbnGenerator.generate(),
+                    "Great Expectations",
+                    "Good Choice",
+                    25.3,
+                    20,"https://source.unsplash.com/400*300/?nature"
+            );
+            Book book3 = new Book(
+                    3, IsbnGenerator.generate(),
+                    "Bleak House",
+                    "Bravo",
+                    50.3,
+                    20,"https://source.unsplash.com/400*300/?ocean"
+            );
+            Book book4 = new Book(
+                    4, IsbnGenerator.generate(),
+                    "Under The Greenwood Tree",
+                    "Nice",
+                    70.0,
+                    20,"https://source.unsplash.com/400*300/?forest"
+            );
+            Book book5 = new Book(
+                    5, IsbnGenerator.generate(),
+                    "Return of the Native",
+                    "Bravo",
+                    25.0,
+                    20,"https://source.unsplash.com/400*300/?water"
+            );
+            Book book6 = new Book(
+                    1, IsbnGenerator.generate(),
+                    "Far From the Maddening Crowd",
+                    "Great",
+                    67.0,
+                    20,"https://source.unsplash.com/400*300/?fire"
+            );
+            //Mapping
+            author1.addBook(book1);
+            author1.addBook(book2);
+            author1.addBook(book3);
 
+            author2.addBook(book4);
+            author2.addBook(book5);
+            author2.addBook(book6);
+
+            Publisher pub1 = publisherDao.save(publisher1);
+            pub1.addBook(book1);
+            pub1.addBook(book2);
+            pub1.addBook(book3);
+
+            Publisher pub2 = publisherDao.save(publisher2);
+
+            pub2.addBook(book4);
+            pub2.addBook(book5);
+            pub2.addBook(book6);
+
+            Genre gen1 = genreDao.save(genre1);
+
+            book1.addGenres(gen1);
+            book2.addGenres(gen1);
+            book3.addGenres(gen1);
+
+            Genre gen2 = genreDao.save(genre2);
+
+            book4.addGenres(gen2);
+            book5.addGenres(gen2);
+            book6.addGenres(gen2);
+
+            //save
+            authorDao.save(author1);
+            authorDao.save(author2);
+
+            publisherDao.save(publisher1);
+            publisherDao.save(publisher2);
+
+            genreDao.save(genre1);
+            genreDao.save(genre2);
         };
     }
     public static void main(String[] args) {

@@ -48,7 +48,7 @@ public class Book {
         orderItem.setBook(this);
         orderItems.add(orderItem);
     }
-    public void addGenre(Genre genre){
+    public void addGenres(Genre genre){
         genre.getBooks().add(this);
         genres.add(genre);
     }
