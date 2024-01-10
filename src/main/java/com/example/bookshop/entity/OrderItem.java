@@ -16,7 +16,7 @@ public class OrderItem {
     private int quantity;
     @ManyToOne
     private Book book;
-    @JoinColumn(name = "order_id_fk")
+    @JoinColumn(name = "order_id_fk1")
     @ManyToOne
     private Order order;
 }

@@ -14,7 +14,7 @@
                                 <h5 class="card-title" th:text="${books.get(1).title}"></h5>
                                 <p class="lead">Lorem Ipsum dolor sit amet, consectetur adipisicing elit.
                                     Dolor harum in modi quibusdam quos voluptate?</p>
-                                <button class="btn btn-lg btn-outline-primary px-3">Details</button>
+                                <a th:href="@{/book/list-books}" class="btn btn-lg btn-outline-primary px-3">Details</a>
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                                 <h5 class="card-title" th:text="${books.get(4).title}"></h5>
                                 <p class="lead">Lorem Ipsum dolor sit amet, consectetur adipisicing elit.
                                     Dolor harum in modi quibusdam quos voluptate?</p>
-                                <button class="btn btn-lg btn-outline-primary px-3">Details</button>
+                                <a th:href="@{/book/list-books}" class="btn btn-lg btn-outline-primary px-3">Details</a>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                     <div class="row">
                         <div class="col-md-4" th:each="book : ${books}">
                             <div class="card mb-3">
-                                <img th:src="${book.imgUrl}" class="img-thumbnail" alt="">
+                                    <img th:src="${book.imgUrl}" class="img-thumbnail" alt="">
                             </div>
                         </div>
                     </div>
@@ -109,23 +109,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="footer" class="bg-secondary text-white p-4">
-        <ul class="nav text-center flex-column justify-content-center flex-sm-row">
-            <li class="nav-item">
-                <a href="#" class="nav-link">FAQ</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">EXPERIENCE</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">CONTACT</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">BOOK NOW</a>
-            </li>
-        </ul>
     </section>
 </main>
 </body>
